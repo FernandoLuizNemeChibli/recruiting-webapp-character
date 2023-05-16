@@ -26,7 +26,7 @@ export default function ClassElement({
     })
     console.log(newDisabledValue)
     setClassDisabled(newDisabledValue)
-  }, [charAttributes])
+  }, [attributesRequirements, charAttributes])
 
   return (
     <Button variant="contained" disabled={classDisabled}>
