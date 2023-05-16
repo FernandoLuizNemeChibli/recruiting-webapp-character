@@ -6,8 +6,6 @@ import AttributeElement from "../AttributeElement"
 export default function AttributePanel({ charAttributes }) {
   const [attributes, setAttributes] = useState(charAttributes)
 
-  console.log(attributes)
-
   const createAttributeSetter = (attributeName) => {
     //
     const attributeSetter = (newValue) => {
