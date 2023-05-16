@@ -8,15 +8,19 @@ import ClassPanel from "./components/ClassPanel"
 
 function App() {
   const player = new Player("player name placeholder")
+  const [charAttributes, setCharAttributes] = useState(player.attributes)
   return (
     <div className="App">
       <header className="App-header">
         <h1>React Coding Exercise</h1>
       </header>
       <section className="App-section">
-        <Stack direction="row">
-          <AttributePanel charAttributes={player.attributes} />
-          <ClassPanel />
+        <Stack direction="row" spacing={2}>
+          <AttributePanel
+            charAttributes={charAttributes}
+            setCharAttributes={setCharAttributes}
+          />
+          <ClassPanel charAttributes={charAttributes} />
         </Stack>
       </section>
     </div>

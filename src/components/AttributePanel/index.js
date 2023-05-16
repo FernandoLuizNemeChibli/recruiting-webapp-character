@@ -3,14 +3,10 @@ import React, { useEffect, useState } from "react"
 import { ATTRIBUTE_LIST } from "../../consts"
 import AttributeElement from "../AttributeElement"
 
-export default function AttributePanel({ charAttributes }) {
-  const [attributes, setAttributes] = useState(charAttributes)
-
+export default function AttributePanel({ charAttributes, setCharAttributes }) {
   const createAttributeSetter = (attributeName) => {
-    //
     const attributeSetter = (newValue) => {
-      console.log(newValue, attributeName)
-      setAttributes((previousAttributes) => ({
+      setCharAttributes((previousAttributes) => ({
         ...previousAttributes,
         [attributeName]: {
           ...previousAttributes[attributeName],
@@ -21,12 +17,12 @@ export default function AttributePanel({ charAttributes }) {
     return attributeSetter
   }
   return (
-    <Stack direction="column">
+    <Stack direction="column" spacing={2}>
       {ATTRIBUTE_LIST.map((attributeName) => (
         <AttributeElement
           key={`attributeElement${attributeName}`}
           attributeName={attributeName}
-          attributeValue={attributes[attributeName].points}
+          attributeValue={charAttributes[attributeName].points}
           setAttributeValue={createAttributeSetter(attributeName)}
         />
       ))}
