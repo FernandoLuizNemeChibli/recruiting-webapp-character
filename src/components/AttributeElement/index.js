@@ -22,14 +22,14 @@ export default function AttributeElement({
       <Button
         variant="outlined"
         size="large"
-        startIcon={<Add />}
-        onClick={increaseAttribute}
+        startIcon={<Remove />}
+        onClick={decreaseAttribute}
       />
       <Button
         variant="outlined"
         size="large"
-        startIcon={<Remove />}
-        onClick={decreaseAttribute}
+        startIcon={<Add />}
+        onClick={increaseAttribute}
       />
     </div>
   )
