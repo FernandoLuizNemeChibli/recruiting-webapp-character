@@ -6,30 +6,28 @@ export default function ClassElement({
   className,
   attributesRequirements,
   charAttributes,
+  callModal,
 }) {
   const [classDisabled, setClassDisabled] = useState(true)
 
   useEffect(() => {
     let newDisabledValue = false
     ATTRIBUTE_LIST.forEach((attributeName) => {
-      console.log("checking ", attributeName)
       if (
         charAttributes[attributeName].points <
         attributesRequirements[attributeName]
       ) {
-        console.log(
-          charAttributes[attributeName].points,
-          attributesRequirements[attributeName]
-        )
         newDisabledValue = true
       }
     })
-    console.log(newDisabledValue)
     setClassDisabled(newDisabledValue)
   }, [attributesRequirements, charAttributes])
 
   return (
-    <Button variant="contained" disabled={classDisabled}>
+    <Button
+      variant={classDisabled ? "outline" : "contained"}
+      onClick={() => callModal(className)}
+    >
       {className}
     </Button>
   )
