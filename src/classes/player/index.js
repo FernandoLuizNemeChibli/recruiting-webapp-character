@@ -1,4 +1,5 @@
 import { ATTRIBUTE_LIST, CLASS_LIST, SKILL_LIST } from "../../consts.js"
+import Attribute from "../attribute/index.js"
 
 export default class Player {
   constructor(name) {
@@ -6,14 +7,10 @@ export default class Player {
     this.attributes = Array(...ATTRIBUTE_LIST).reduce(
       (accumulator, attributeName) => ({
         ...accumulator,
-        [attributeName]: {
-          points: 10,
-          modifier: 0,
-        },
+        [attributeName]: new Attribute(attributeName, 10),
       }),
       {}
     )
-    this.class = null
     this.skill = SKILL_LIST.map((skill) => {
       return {
         [skill.name]: {

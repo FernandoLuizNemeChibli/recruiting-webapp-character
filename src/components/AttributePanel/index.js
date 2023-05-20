@@ -4,7 +4,7 @@ import { ATTRIBUTE_LIST } from "../../consts"
 import AttributeElement from "../AttributeElement"
 
 export default function AttributePanel({ charAttributes, setCharAttributes }) {
-  const createAttributeSetter = (attributeName) => {
+  const createPointsSetter = (attributeName) => {
     const attributeSetter = (newValue) => {
       setCharAttributes((previousAttributes) => ({
         ...previousAttributes,
@@ -21,9 +21,8 @@ export default function AttributePanel({ charAttributes, setCharAttributes }) {
       {ATTRIBUTE_LIST.map((attributeName) => (
         <AttributeElement
           key={`attributeElement${attributeName}`}
-          attributeName={attributeName}
-          attributeValue={charAttributes[attributeName].points}
-          setAttributeValue={createAttributeSetter(attributeName)}
+          attribute={charAttributes[attributeName]}
+          setPoints={createPointsSetter(attributeName)}
         />
       ))}
     </Stack>
